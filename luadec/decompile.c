@@ -1991,19 +1991,19 @@ char* ProcessCode(Proto* f, int indent, int func_checking, char* funcnumstr) {
 
 		F->pc = pc;
 
-		// pop ËùÓÐ endpc < pc µÄ
+		// pop ï¿½ï¿½ï¿½ï¿½ endpc < pc ï¿½ï¿½
 		while (RvarTop > 0 && f->locvars[Rvar[RvarTop-1]].endpc < pc + 1) {
 			RvarTop--;
 			Rvar[RvarTop] = -1;
 		}
-		// push ËùÓÐ startpc <= pc µÄ£¬ÒÆµ½ÏÂÒ»¸öÎ´Ê¹ÓÃµÄ±äÁ¿
+		// push ï¿½ï¿½ï¿½ï¿½ startpc <= pc ï¿½Ä£ï¿½ï¿½Æµï¿½ï¿½ï¿½Ò»ï¿½ï¿½Î´Ê¹ï¿½ÃµÄ±ï¿½ï¿½ï¿½
 		while (currLocVar < f->sizelocvars && f->locvars[currLocVar].startpc <= pc + 1) {
 			Rvar[RvarTop] = currLocVar;
 			RvarTop++;
 			currLocVar++;
 			TestLocVarIndex(RvarTop-1, pc);
 		}
-		// ÄÇÃ´´ËÊ± vars[r] ¼´¶ÔÓ¦ reg[r] µÄ±äÁ¿
+		// ï¿½ï¿½Ã´ï¿½ï¿½Ê± vars[r] ï¿½ï¿½ï¿½ï¿½Ó¦ reg[r] ï¿½Ä±ï¿½ï¿½ï¿½
 
 		if (pc > F->loop_ptr->end) {
 			next_child = F->loop_ptr->next;
@@ -2175,7 +2175,17 @@ char* ProcessCode(Proto* f, int indent, int func_checking, char* funcnumstr) {
 			/*
 			* Constant. Store it in register.
 			*/
-			char *ctt = DecompileConstant(f, bc);
+			const TValue* o = &f->k[bc];
+			char buff[256];
+			char* ctt = NULL;
+
+			if (ttype(o) == 9) {
+				sprintf(buff, LUA_NUMBER_FMT, nvalue(o));
+				ctt = luadec_strdup(buff);
+			} else {
+				ctt = DecompileConstant(f, bc);
+			}
+
 			TRY(AssignReg(F, a, ctt, 0, 1));
 			free(ctt);
 			break;
