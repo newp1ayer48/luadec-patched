@@ -1,0 +1,12 @@
+# luadec patched
+다양한 기기를 지원하는 luadec 패치 버전
+
+## execute
+```
+./luadec ./luafile.lua
+```
+
+## 업로드 현황
+
+- [x] luadec 업로드 (25.09.21)
+  - [x] openwrt 패치 적용 완료 (25.09.21)
