@@ -16,3 +16,17 @@
 
 - [ ] tplink
    - [x] tplink Datatype 9 int형으로 패치 (25.09.21)
+     <details>
+     <summary>패치 전후</summary>
+     <div markdown="1">
+
+     - 패치 전
+     ```
+     local l_0_24 = Unknown_Type_Error
+     ```
+     - 패치 후
+     ```
+     local l_0_24 = 4
+     ```
+     </div>
+     </details>
