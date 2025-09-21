@@ -6,7 +6,13 @@
 ./luadec ./luafile.lua
 ```
 
+## 지원 기기
+- tplink
+
 ## 업로드 현황
 
 - [x] luadec 업로드 (25.09.21)
   - [x] openwrt 패치 적용 완료 (25.09.21)
+
+- [ ] tplink
+   - [x] tplink Datatype 9 int형으로 패치 (25.09.21)
