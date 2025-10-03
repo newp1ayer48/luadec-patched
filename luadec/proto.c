@@ -266,11 +266,11 @@ char* DecompileConstant(const Proto* f, int i) {
 		return ret;
 	}
 	case 9:
-    {
-        char* ret = (char*)calloc(128, sizeof(char));
-        sprintf(ret, LUA_INTEGER_FMT, ivalue(o)); 
-        return ret;
-    }
+	{
+		char* ret = (char*)calloc(128, sizeof(char));
+		sprintf(ret, LUA_INTEGER_FMT, ivalue(o)); 
+		return ret;
+	}
 	case LUA_TSTRING:
 #ifdef LUA_TLNGSTR
 	case LUA_TLNGSTR:
@@ -295,7 +295,7 @@ char* DecompileConstant(const Proto* f, int i) {
 		return DecompileString(o);
 #endif
 	default:
-		// printf("DEBUG: Found unknown constant type: %d\n", ttype(o));
+		printf("DEBUG: Found unknown constant type: %d\n", ttype(o));
 		return strdup("Unknown_Type_Error");
 	}
 }

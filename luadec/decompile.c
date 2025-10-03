@@ -2178,7 +2178,7 @@ char* ProcessCode(Proto* f, int indent, int func_checking, char* funcnumstr) {
 			/*
 			* Constant. Store it in register.
 			*/
-			char* ctt = NULL;
+			char *ctt = DecompileConstant(f, bc);
 			TRY(AssignReg(F, a, ctt, 0, 1));
 			free(ctt);
 			break;

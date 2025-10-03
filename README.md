@@ -16,6 +16,7 @@
 
 - [ ] tplink
    - [x] tplink Datatype 9 int형으로 패치 (25.09.21)
+   - [x] Datatype 9 -> proto.c로 패치 변경, SetList error 패치 (25.10.03)
      <details>
      <summary>패치 전후</summary>
      <div markdown="1">
