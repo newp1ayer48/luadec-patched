@@ -937,6 +937,9 @@ void SetList(Function* F, int a, int b, int c) {
 		SET_ERROR(F, errortmp);
 		return;
 	}
+
+	int start_index = (c - 1) * LFIELDS_PER_FLUSH;
+
 	if (b == 0) {
 		const char* rstr;
 		i = 1;
@@ -955,7 +958,7 @@ void SetList(Function* F, int a, int b, int c) {
 		const char* rstr = GetR(F, a + i);
 		if (error)
 			return;
-		AddToTable(F, tbl, rstr, NULL); // Lua5.1 specific TODO: it's not really this :(
+		AddToTable(F, tbl, rstr, start_index + i); // Lua5.1 specific TODO: it's not really this :(
 	}
 }
 
@@ -2175,17 +2178,7 @@ char* ProcessCode(Proto* f, int indent, int func_checking, char* funcnumstr) {
 			/*
 			* Constant. Store it in register.
 			*/
-			const TValue* o = &f->k[bc];
-			char buff[256];
 			char* ctt = NULL;
-
-			if (ttype(o) == 9) {
-				sprintf(buff, LUA_NUMBER_FMT, nvalue(o));
-				ctt = luadec_strdup(buff);
-			} else {
-				ctt = DecompileConstant(f, bc);
-			}
-
 			TRY(AssignReg(F, a, ctt, 0, 1));
 			free(ctt);
 			break;
