@@ -9,6 +9,10 @@
 ## 지원 기기
 - tplink
 
+## 블로그
+- https://hackyboiz.github.io/2025/10/04/newp1ayer48/lua/kr/ (korean)
+- https://hackyboiz.github.io/2025/10/04/newp1ayer48/lua/en/ (english)
+
 ## 업로드 현황
 
 - [x] luadec 업로드 (25.09.21)
